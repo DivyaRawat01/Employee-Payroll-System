@@ -115,6 +115,3 @@ UPDATE Salary_Details SET basic_salary = 5000 WHERE emp_id = 101;
 | `ORA-01017: invalid username/password` | Check `DB_USER` and `DB_PASSWORD` in `app.py`. |
 | Cannot connect / timeout | Check `DB_DSN`, your internet connection and that your database is running. |
 | "No payroll found" on the report | Save attendance and generate payroll for that month first. |
-
-## Security note
-Do not commit a real password to GitHub. Keep `DB_PASSWORD` as a placeholder in any shared copy.
