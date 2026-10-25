@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Employee Details{% endblock %}
+{% block content %}
+<h2>Employee Details</h2>
+<form method="post">
+  <label>Name</label><input type="text" name="emp_name" required>
+  <label>Email</label><input type="email" name="email">
+  <label>Designation</label><input type="text" name="designation">
+  <label>Department</label>
+  <select name="dept_id">
+    {% for id, name in depts %}<option value="{{ id }}">{{ name }}</option>{% endfor %}
+  </select>
+  <label>Basic Salary</label><input type="number" name="basic_salary" step="0.01" required>
+  <button type="submit">Save employee</button>
+</form>
+
+<table>
+  <tr><th>ID</th><th>Name</th><th>Designation</th><th>Department</th><th>Basic Salary</th></tr>
+  {% for e in employees %}
+  <tr><td>{{ e[0] }}</td><td>{{ e[1] }}</td><td>{{ e[2] or '' }}</td><td>{{ e[3] }}</td><td>{{ e[4] }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}
