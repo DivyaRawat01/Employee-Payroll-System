@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Payroll Report{% endblock %}
+{% block content %}
+<h2>Payroll Report</h2>
+<form method="get">
+  <label>Month</label><input type="month" name="pay_month" value="{{ month }}">
+  <button type="submit">View report</button>
+</form>
+
+{% if rows %}
+<table>
+  <tr><th>ID</th><th>Name</th><th>Dept</th><th>Gross</th><th>Deductions</th><th>Net</th></tr>
+  {% for r in rows %}
+  <tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td><td>{{ r[2] }}</td>
+      <td>{{ '%.2f'|format(r[3]) }}</td><td>{{ '%.2f'|format(r[4]) }}</td><td>{{ '%.2f'|format(r[5]) }}</td></tr>
+  {% endfor %}
+  <tr><th colspan="5">Total net payout</th><th>{{ '%.2f'|format(total) }}</th></tr>
+</table>
+{% else %}
+<p>No payroll found for this month. Generate it on the Salary Processing page first.</p>
+{% endif %}
+{% endblock %}
